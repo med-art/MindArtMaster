@@ -4,7 +4,7 @@ let toggle = 0;
 
 var colours = [
   ['#6A732C', '#18261B', '#BF9649'],
-  ['#8AA6A3', '#BFBFBF', '#4C5958'],
+  ['#8AA6A3', '#4C5958F', '#4C5958'],
   ['#F2B077', '#F24405', '#261813'],
   ['#D94929', '#590902', '#F2B705'],
   ['#F2B705', '#6F7302', '#384001'],
@@ -52,13 +52,13 @@ function writeTextUI() {
 
 
   //invert
-  swapButton = createButton('Draw');
-  swapButton.position(2 * vMax, height - (6 * vMax));
-  swapButton.class("select");
-  swapButton.style('font-size', '1.7vmax');
-  swapButton.style('height', '4vmax');
-  swapButton.style('width', '8vmax');
-  swapButton.mousePressed(activateDraw);
+  // swapButton = createButton('Draw');
+  // swapButton.position(2 * vMax, height - (6 * vMax));
+  // swapButton.class("select");
+  // swapButton.style('font-size', '1.7vmax');
+  // swapButton.style('height', '4vmax');
+  // swapButton.style('width', '8vmax');
+  // swapButton.mousePressed(activateDraw);
 
   slider1 = createSlider(-500, 500, 0); // density
   slider1.input(updateSize);
@@ -69,7 +69,7 @@ function writeTextUI() {
 
 
 
-  createSwatch();
+  // createSwatch();
 }
 
 function createSwatch() {
@@ -102,7 +102,7 @@ function createSwatch() {
   toggleBut.style('font-size', '1.7vmax');
   toggleBut.style('height', '4vmax');
 
-  toggleIt();
+  // toggleIt();
 
 }
 
@@ -123,10 +123,10 @@ function toggleIt() {
 }
 
 function paintOff() {
-  for (let i = 0; i < 2; i++) {
-    swatch[i].position(((i * 9) + 12) * vMax, height - (11 * vMax));
-    swatch[i].size(9 * vMax, 8 * vMax);
-  }
+  // for (let i = 0; i < 2; i++) {
+  //   swatch[i].position(((i * 9) + 12) * vMax, height - (11 * vMax));
+  //   swatch[i].size(9 * vMax, 8 * vMax);
+  // }
 }
 
 function addFS() {

@@ -26,6 +26,8 @@ const reducer = (accumulator, currentValue) => accumulator + currentValue;
 let velocity = 0;
 let img, storedOrientation, direction, storedOrientationDegrees, rotateDirection;
 
+let tempLayer;
+
 function preload() {
   audio = loadSound('../sound/Scene2_Line.mp3');
   click = loadSound('../sound/click.mp3');
@@ -33,6 +35,7 @@ function preload() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
+  tempLayer = createGraphics(window.innerWidth, window.innerHeight);
   pixelDensity(1);
   var stbtn = $("<div />").appendTo("body");
   stbtn.addClass('startBtn');
@@ -88,6 +91,8 @@ function setupDefaults() {
   counter = 0;
   stroke(255, 50);
   brushSizeBaseline = 100;
+
+
 }
 
 function setupArrays() {
@@ -139,7 +144,14 @@ function next() {
     activateDraw();
 
   setupArrays();
+
+ blendMode(BLEND);
+  // background(hexToRgb(colours[cc][0], 255));
+  background(255, 255);
   redrawIt();
+  
+
+
 
 
 
@@ -170,7 +182,7 @@ function touchMoved() {
       let _x = store[i][1];
       let _y = store[i][2];
       let temp = createVector(mouseX, mouseY);
-      _d = _d / (vMax * 0.2);
+      _d = _d / (vMax * 0.1);
       arr[_x][_y] = p5.Vector.lerp(arr[_x][_y], temp, 1 / _d);
     }
   } else {
@@ -181,7 +193,7 @@ function touchMoved() {
       choice = 1;
     }
     if (store.length > 0) {
-      ccc = hexToRgb(colours[cc][choice]);
+      ccc = hexToRgb(colours[cc][choice], 0.5);
       arrLineCol[store[store.length - 1][2]] = [ccc.levels[0], ccc.levels[1], ccc.levels[2]]
     }
   }
@@ -202,36 +214,34 @@ function sortFunction(a, b) {
 
 function redrawIt() {
 
-  c1 = color(colours[cc][2]);
-  c2 = color(255);
-  
-  for(let y=0; y<height; y++){
-    n = map(y,0,height,0,1);
-    let newc = lerpColor(c1,c2,n);
-    stroke(newc);
-    line(0,y,width, y);
-  }
 
+blendMode(BLEND);
+background(255,100);
+ blendMode(BLEND);
   for (let y = 0; y < yCount; y++) {
-    //stroke((1/yCount)*y*255, 180)
     strokeWeight((1 / yCount) * y * 4.5);
-    stroke(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 200);
+    stroke(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 100);
+    fill(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 100);
     beginShape();
     let vvW = -10 * vW;
     let vvH = -10 * vH;
     for (let x = 0; x < xCount; x++) {
       curveVertex(arr[x][y].x, arr[x][y].y);
     }
+
+    // curveVertex(windowWidth, windowHeight);
+    // curveVertex(0, windowHeight);
+
     endShape();
   }}
 
-function hexToRgb(hex) {
+function hexToRgb(hex, alpha) {
   hex = hex.replace('#', '');
   var bigint = parseInt(hex, 16);
   var r = (bigint >> 16) & 255;
   var g = (bigint >> 8) & 255;
   var b = bigint & 255;
-  return color(r, g, b);
+  return color(r, g, b, alpha);
 }
 
 function windowResized() {
