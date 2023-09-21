@@ -4,16 +4,11 @@ let toggle = 0;
 
 var colours = [
   ['#6A732C', '#18261B', '#BF9649'],
-  ['#8AA6A3', '#4C5958F', '#4C5958'],
+  ['#8AA6A3', '#4C5958', '#4C5958'],
   ['#F2B077', '#F24405', '#261813'],
-  ['#0D0D0D', '#0D0D0D', '#262626'],
   ['#D94929', '#590902', '#F2B705'],
-  ['#F2B705', '#1450A4', '#384001'],
-  ['#F2B705', '#02735E', '#384001'],
-  ['#F2B705', '#F2668B', '#384001'],
-  ['#F2B705', '#011F26', '#384001'],
-  ['#F2B705', '#363432', '#384001']
-
+  ['#F2B705', '#F2B705', '#384001'],
+  ['#0D0D0D', '#0D0D0D', '#262626']
 ];
 
 
@@ -136,7 +131,7 @@ function paintOff() {
 
 function addFS() {
   $('.fsButton').remove();
-  fsButton = createImg('../assets/enterFS.png', "FULLSCREEN");
+  fsButton = createImg('assets/enterFS.png', "FULLSCREEN");
   fsButton.style('height', '4.5vMax');
   fsButton.class("fsButton");
   fsButton.position(width - (7.5 * vMax), 1.5 * vMax);

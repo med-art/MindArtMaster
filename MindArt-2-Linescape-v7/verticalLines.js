@@ -193,7 +193,7 @@ function touchMoved() {
       choice = 1;
     }
     if (store.length > 0) {
-      ccc = hexToRgb(colours[cc][choice], 0.5);
+      ccc = hexToRgb(colours[cc][choice], 0.1);
       arrLineCol[store[store.length - 1][2]] = [ccc.levels[0], ccc.levels[1], ccc.levels[2]]
     }
   }
@@ -241,8 +241,9 @@ function hexToRgb(hex, alpha) {
   var r = (bigint >> 16) & 255;
   var g = (bigint >> 8) & 255;
   var b = bigint & 255;
-  // console.log(hex);
+  console.log(hex);
   return color(r, g, b, alpha);
+
 }
 
 function windowResized() {
