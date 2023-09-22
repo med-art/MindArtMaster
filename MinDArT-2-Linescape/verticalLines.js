@@ -86,7 +86,7 @@ function dimensionCalc() {
 
 function setupDefaults() {
   strokeWeight(2); // set a baseline in case strokeWeight within touchMoved is disabled
-  yCount = 35;
+  yCount = 45;
   xCount = 35;
   counter = 0;
   stroke(255, 50);
@@ -215,9 +215,7 @@ function sortFunction(a, b) {
 function redrawIt() {
 
 
-blendMode(BLEND);
 background(255,100);
- blendMode(BLEND);
   for (let y = 0; y < yCount; y++) {
     strokeWeight((1 / yCount) * y * 4.5);
     stroke(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 100);
