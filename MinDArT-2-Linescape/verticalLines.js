@@ -79,7 +79,6 @@ function dimensionCalc() {
     vMax = width / 100;
   } else {
     vMax = height / 100;
-  }
   vW = width / 100;
   vH = height / 100;
 }
@@ -110,10 +109,10 @@ function setupArrays() {
     arr[i] = [];
     for (let j = 0; j < yCount; j++) {
       let _x = (width / xCount) * i;
-      _x = map(_x, 0, width, vW * -15, width + (vW * 15)); // ensures beyond margin
+      _x = map(_x, 0, width, vW * -20, width + (vW * 20)); // ensures beyond margin
       let _y = ((height / yCount) * j);
       _y = map(pow(_y, 2), 0, pow(height, 2), 0, height);
-      _y = map(_y, 0, height, vH * -15, height + (vH * 15)); // ensures beyond margin
+      _y = map(_y, 0, height, vH * -20, height + (vH * 20)); // ensures beyond margin
       arr[i][j] = createVector(_x, _y);
     }
   }
