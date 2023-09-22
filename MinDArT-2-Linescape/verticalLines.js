@@ -213,23 +213,15 @@ function sortFunction(a, b) {
 }
 
 function redrawIt() {
-
-
-background(255,100);
+background(255);
   for (let y = 0; y < yCount; y++) {
     strokeWeight((1 / yCount) * y * 4.5);
-    stroke(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 100);
+    stroke(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 90);
     fill(arrLineCol[y][0], arrLineCol[y][1], arrLineCol[y][2], 100);
     beginShape();
-    let vvW = -10 * vW;
-    let vvH = -10 * vH;
     for (let x = 0; x < xCount; x++) {
       curveVertex(arr[x][y].x, arr[x][y].y);
     }
-
-    // curveVertex(windowWidth, windowHeight);
-    // curveVertex(0, windowHeight);
-
     endShape();
   }}
 
